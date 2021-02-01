@@ -269,3 +269,7 @@ addr.cryptocurrency  # cryptocurrency
 
 ## Contributing
 See [CONTRIBUTING.md](CONTRIBUTING.md)
+
+
+## License
+[MIT License](https://github.com/graphql-python/gql/blob/master/LICENSE)
