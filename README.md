@@ -44,8 +44,10 @@ import buycoins as bc
 
 # Create a virtual deposit account:
 acc = bc.accounts.create_deposit("john doe") # acc is a VirtualDepositAccountType
-acc.account_name  # "john doe"
-acc.bank_name # bank name
+
+acc.account_name  # john doe
+acc.bank_name  # bank name
+acc.account_number  # account number
 ```
 
 ### Orders
@@ -88,8 +90,9 @@ prices[0].expires_at  # when this price entry will expire
 
 # Get price for a single cryptocurrency
 price = bc.orders.get_price("bitcoin")  # price is a CoinPriceType
+
 price.id  # ID of this price entry
-price.cryptocurrency  # "bitcoin"
+price.cryptocurrency  # bitcoin
 
 
 # Buy a cryptocurrency
@@ -112,8 +115,8 @@ order = bc.orders.sell(
 )  # order is an OrderType
 
 order.status  # either active or pending
-order.side  # "sell"
-order.cryptocurrency  # "ethereum"
+order.side  # sell
+order.cryptocurrency  # ethereum
 ```
 
 ### P2P Trading
@@ -149,7 +152,8 @@ order = bc.p2p.place_limit_order(
     dynamic_exchange_rate=None  # float   
 )  # order is an OrderType
 
-# NB: if price_type == 'static', static_price must be provided, and if price_type == 'dynamic', dynamic_exchange_rate must be provided
+# NB: if price_type == 'static', static_price must be provided, and 
+# if price_type == 'dynamic', dynamic_exchange_rate must be provided
 
 order.id  # ID of order
 order.status  # status, either active or inactive
@@ -261,3 +265,7 @@ addr = bc.transactions.create_address(
 addr.address  # Address string
 addr.cryptocurrency  # cryptocurrency
 ```
+
+
+## Contributing
+See [CONTRIBUTING.md](CONTRIBUTING.md)
