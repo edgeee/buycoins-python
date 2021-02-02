@@ -70,7 +70,7 @@ def place_market_order(*, side: str, coin_amount: float, cryptocurrency: str):
     return _make_order(result["postMarketOrder"])
 
 
-def get_orders(*, status: str) -> Tuple[List[OrderType], Any]:
+def get_orders(status: str) -> Tuple[List[OrderType], Any]:
     query_str = """
         query($status: GetOrdersStatus!) {
           getOrders(status: $status) {

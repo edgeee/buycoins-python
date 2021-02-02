@@ -57,14 +57,14 @@ def get_balances() -> List[CoinBalanceType]:
     return balances
 
 
-def get_balance(crypto: str) -> Optional[CoinBalanceType]:
+def get_balance(cryptocurrency: str) -> Optional[CoinBalanceType]:
     for balance in get_balances():
-        if balance.cryptocurrency == crypto:
+        if balance.cryptocurrency == cryptocurrency:
             return balance
     return None
 
 
-def estimate_network_fee(crypto: str, amount: float) -> NetworkFeeType:
+def estimate_network_fee(cryptocurrency: str, amount: float) -> NetworkFeeType:
     query_str = """
         query($crypto: Cryptocurrency, $amount: BigDecimal!) {
           getEstimatedNetworkFee(cryptocurrency: $crypto, amount: $amount) {
@@ -73,7 +73,7 @@ def estimate_network_fee(crypto: str, amount: float) -> NetworkFeeType:
           }
         }
     """
-    variables = dict(crypto=crypto, amount=amount)
+    variables = dict(crypto=cryptocurrency, amount=amount)
     res = execute_query(query_str, variables)
     fee = res["getEstimatedNetworkFee"]
 
