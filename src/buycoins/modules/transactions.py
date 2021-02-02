@@ -84,7 +84,7 @@ def estimate_network_fee(crypto: str, amount: float) -> NetworkFeeType:
 
 def send(*, cryptocurrency: str, amount: float, address: str) -> SendReturnValueType:
     query_str = """
-        mutation($crypto: String!, amount: Number!, $address: String!) {
+        mutation($crypto: String!, $amount: Number!, $address: String!) {
           send(cryptocurrency: $crypto, amount: $amount, address: $address) {
             id
             address
@@ -116,7 +116,7 @@ def send(*, cryptocurrency: str, amount: float, address: str) -> SendReturnValue
     )
 
 
-def create_address(*, cryptocurrency: str):
+def create_address(cryptocurrency: str):
     query_str = """
         mutation($crypto: Cryptocurrency) {
           createAddress(cryptocurrency: $crypto) {

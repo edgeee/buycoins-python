@@ -34,7 +34,7 @@ def _make_order(node: Dict) -> OrderType:
         status=node.get("status"),
         created_at=node.get("createdAt"),
         price_type=node.get("priceType"),
-        static_price=node.get("static_price"),
+        static_price=node.get("staticPrice", 0),
         dynamic_exchange_rate=node.get("dynamicExchangeRate"),
     )
 
