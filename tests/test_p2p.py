@@ -1,4 +1,3 @@
-import tests.conftest
 from tests.utils import _mock_gql
 
 
@@ -6,13 +5,13 @@ place_limit_order_response = dict(
     postLimitOrder=dict(
         id="3",
         cryptocurrency="bitcoin",
-        coinAmount=0.0023,
+        coinAmount="0.0023",
         side="buy",
         status="active",
-        createdAt=2342343,
-        pricePerCoin=29048,
+        createdAt="2342343",
+        pricePerCoin="29048",
         priceType="static",
-        staticPrice=2342.23,
+        staticPrice="2342.23",
         dynamicExchangeRate=None,
     )
 )
@@ -21,11 +20,11 @@ place_market_order_response = dict(
     postMarketOrder=dict(
         id="20",
         cryptocurrency="ethereum",
-        coinAmount=0.0123,
+        coinAmount="0.0123",
         side="sell",
         status="active",
-        createdAt=2342343,
-        pricePerCoin=29048,
+        createdAt="2342343",
+        pricePerCoin="29048",
         priceType=None,
         staticPrice=None,
         dynamicExchangeRate=None,
@@ -42,7 +41,7 @@ get_orders_response = dict(
                     node=dict(
                         id="4",
                         cryptocurrency="bitcoin",
-                        coinAmount=0.2023,
+                        coinAmount="0.2023",
                         status="active",
                     )
                 ),
@@ -50,7 +49,7 @@ get_orders_response = dict(
                     node=dict(
                         id="2",
                         cryptocurrency="ethereum",
-                        coinAmount=3.0,
+                        coinAmount="3.0",
                         status="active",
                     )
                 ),
@@ -58,7 +57,7 @@ get_orders_response = dict(
                     node=dict(
                         id="2",
                         cryptocurrency="litecoin",
-                        coinAmount=7.340,
+                        coinAmount="7.340",
                         status="active",
                     )
                 ),
@@ -76,7 +75,7 @@ get_market_book_response = dict(
                     node=dict(
                         id="2",
                         cryptocurrency="ethereum",
-                        coinAmount=3.0,
+                        coinAmount="3.0",
                         status="active",
                     )
                 ),
@@ -84,7 +83,7 @@ get_market_book_response = dict(
                     node=dict(
                         id="2",
                         cryptocurrency="litecoin",
-                        coinAmount=7.340,
+                        coinAmount="7.340",
                         status="active",
                     )
                 ),

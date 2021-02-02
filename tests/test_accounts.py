@@ -1,6 +1,4 @@
-import httpretty
-
-from tests.utils import _make_graphql_response
+from tests.utils import _mock_gql
 
 
 create_deposit_response = dict(
@@ -17,12 +15,8 @@ create_deposit_response = dict(
 def test_create_deposit(_graphql_endpoint):
     from buycoins import accounts
 
-    httpretty.register_uri(
-        httpretty.POST,
-        _graphql_endpoint,
-        status=200,
-        body=_make_graphql_response(create_deposit_response),
-    )
+    _mock_gql(create_deposit_response)
+
     acc = accounts.create_deposit("john doe")
     assert type(acc) == accounts.VirtualDepositAccountType
     assert acc.account_number == "123"

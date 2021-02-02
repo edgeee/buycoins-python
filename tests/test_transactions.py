@@ -18,25 +18,19 @@ estimate_network_fee_response = dict(
 
 send_crypto_response = dict(
     send=dict(
-        id='1',
-        address='addr',
-        amount='0.3222',
-        cryptocurrency='bitcoin',
-        fee='0.0002',
-        status='active',
-        transaction=dict(
-            id='tx1',
-            hash='a49s038aty2sfa23434872'
-        )
+        id="1",
+        address="addr",
+        amount="0.3222",
+        cryptocurrency="bitcoin",
+        fee="0.0002",
+        status="active",
+        transaction=dict(id="tx1", hash="a49s038aty2sfa23434872"),
     )
 )
 
 
 create_address_response = dict(
-createAddress=dict(
-    cryptocurrency='litecoin',
-    address='addr1'
-)
+    createAddress=dict(cryptocurrency="litecoin", address="addr1")
 )
 
 
@@ -80,12 +74,12 @@ def test_send_cryptocurrency():
 
     _mock_gql(send_crypto_response)
 
-    sent = transactions.send(cryptocurrency='bitcoin', amount=0.3222, address='addr')
+    sent = transactions.send(cryptocurrency="bitcoin", amount=0.3222, address="addr")
     assert isinstance(sent, transactions.SendReturnValueType)
-    assert sent.id == '1'
-    assert sent.cryptocurrency == 'bitcoin'
-    assert sent.amount == Decimal('0.3222')
-    assert sent.transaction.id == 'tx1'
+    assert sent.id == "1"
+    assert sent.cryptocurrency == "bitcoin"
+    assert sent.amount == Decimal("0.3222")
+    assert sent.transaction.id == "tx1"
 
 
 def test_create_address():
@@ -93,7 +87,7 @@ def test_create_address():
 
     _mock_gql(create_address_response)
 
-    created_address = transactions.create_address('litecoin')
+    created_address = transactions.create_address("litecoin")
     assert isinstance(created_address, transactions.AddressType)
-    assert created_address.address == 'addr1'
-    assert created_address.cryptocurrency == 'litecoin'
+    assert created_address.address == "addr1"
+    assert created_address.cryptocurrency == "litecoin"

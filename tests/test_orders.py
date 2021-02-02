@@ -1,7 +1,6 @@
 from decimal import Decimal
-import httpretty
 
-from tests.utils import _make_graphql_response
+from tests.utils import _mock_gql
 
 
 get_prices_response = dict(
@@ -59,12 +58,7 @@ buy_response = dict(
 def test_get_prices(_graphql_endpoint):
     from buycoins import orders
 
-    httpretty.register_uri(
-        httpretty.POST,
-        _graphql_endpoint,
-        status=200,
-        body=_make_graphql_response(get_prices_response),
-    )
+    _mock_gql(get_prices_response)
 
     prices = orders.get_prices()
     assert 3 == len(prices)
@@ -76,12 +70,7 @@ def test_get_prices(_graphql_endpoint):
 def test_get_price(_graphql_endpoint):
     from buycoins import orders
 
-    httpretty.register_uri(
-        httpretty.POST,
-        _graphql_endpoint,
-        status=200,
-        body=_make_graphql_response(get_prices_response),
-    )
+    _mock_gql(get_prices_response)
 
     price = orders.get_price("litecoin")
     assert orders.CoinPriceType == type(price)
@@ -93,12 +82,7 @@ def test_get_price(_graphql_endpoint):
 def test_sell(_graphql_endpoint):
     from buycoins import orders
 
-    httpretty.register_uri(
-        httpretty.POST,
-        _graphql_endpoint,
-        status=200,
-        body=_make_graphql_response(sell_coin_response),
-    )
+    _mock_gql(sell_coin_response)
 
     resp = orders.sell(price_id="1", coin_amount=0.0510, cryptocurrency="ethereum")
 
@@ -111,12 +95,7 @@ def test_sell(_graphql_endpoint):
 def test_buy(_graphql_endpoint):
     from buycoins import orders
 
-    httpretty.register_uri(
-        httpretty.POST,
-        _graphql_endpoint,
-        status=200,
-        body=_make_graphql_response(buy_response),
-    )
+    _mock_gql(buy_response)
 
     buy_order = orders.buy(price_id="10", coin_amount=0.3, cryptocurrency="bitcoin")
 
