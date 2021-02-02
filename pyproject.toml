@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "buycoins"
-version = "0.1.0"
+version = "1.0.0"
 description = "A Python SDK for the buycoins API"
 authors = ["Rasheed Musa <rasheedmusa9@gmail.com>"]
 readme = "README.md"
