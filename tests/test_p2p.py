@@ -106,10 +106,10 @@ def test_place_limit_order(_graphql_endpoint):
         static_price=2342.23,
     )
     assert orders.OrderType == type(order)
-    assert order.coin_amount == 0.0023
+    assert order.coin_amount == '0.0023'
     assert order.cryptocurrency == "bitcoin"
     assert order.price_type == "static"
-    assert order.static_price == 2342.23
+    assert order.static_price == '2342.23'
 
 
 def test_post_market_order(_graphql_endpoint):
