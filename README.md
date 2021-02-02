@@ -1,5 +1,7 @@
 # Buycoins Python Library
 
+[![Build Status](https://travis-ci.com/edgeee/buycoins-python.svg?token=oQSNV8eQ1aycrRUjPbyg&branch=main)](https://travis-ci.com/edgeee/buycoins-python) [![Circle CI](https://img.shields.io/badge/license-MIT-blue.svg)](https://img.shields.io/badge/license-MIT-blue.svg) [![PyPI version](https://badge.fury.io/py/buycoins.svg)](https://badge.fury.io/py/buycoins) [![Python 3.6+](https://img.shields.io/badge/python-3.6-blue.svg)](https://www.python.org/downloads/release/python-360/)
+
 This library provides easy access to the Buycoins API using the Python programming language. It provides all the feature of the API so that you don't need to interact with the API directly. This libary can be used with Python 3.6+
 
 ## Links
@@ -12,6 +14,12 @@ pip install --upgrade buycoins
 ```
 
 ## Documentation
+
+### Primer
+- The library is structured around the concept of a `type`, so everything is a type. 
+- All date quantities are specified as timestamps. So you would have to reconstruct the ISO dates yourself if you ever need to. 
+- All cryptocurrency (and monetary) values are specified as decimals.
+- Currently supported cryptocurrencies are bitcoin, ethereum, & litecoin. To be updated as the Buycoins API evolves.
 
 ### Initialization
 Firstly, request API access by sending an email to  [support@buycoins.africa](mailto:support@buycoins.africa) with the email address you used in creating a Buycoins account.
@@ -171,14 +179,14 @@ order.status  # status, either active or inactive
 
 
 # Get a list of all your orders
-orders = bc.p2p.get_orders(status="active")  # orders is a list of OrderType
+orders, dynamic_price_expiry = bc.p2p.get_orders("active")  # orders is a list of OrderType; dynamic_price_expiry is a timestamp
 
 orders[0].id  # ID of the first order
 orders[1].status  # status of the first order
 
 
 # Get a list of all ongoing orders on the Buycoins platform
-market_book = bc.p2p.get_market_book()  # market_book is a list of OrderType
+market_book, dynamic_price_expiry = bc.p2p.get_market_book()  # market_book is a list of OrderType; dynamic_price_expiry is a timestamp
 
 orders[0].id  # ID of the first order
 orders[1].status  # status of the first order
@@ -258,9 +266,7 @@ sent.transaction.hash  # txn hash
 
 
 # Generate wallet address
-addr = bc.transactions.create_address(
-    cryptocurrency="bitcoin"
-)  # addr is an AddressType
+addr = bc.transactions.create_address("bitcoin")  # addr is an AddressType
 
 addr.address  # Address string
 addr.cryptocurrency  # cryptocurrency
