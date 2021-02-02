@@ -1,6 +1,6 @@
 # Buycoins Python Library
 
-[![Build Status](https://travis-ci.com/edgeee/buycoins-python.svg?token=oQSNV8eQ1aycrRUjPbyg&branch=main)](https://travis-ci.com/edgeee/buycoins-python) [![Circle CI](https://img.shields.io/badge/license-MIT-blue.svg)](https://img.shields.io/badge/license-MIT-blue.svg) [![PyPI version](https://badge.fury.io/py/buycoins.svg)](https://badge.fury.io/py/buycoins)
+[![Build Status](https://travis-ci.com/edgeee/buycoins-python.svg?token=oQSNV8eQ1aycrRUjPbyg&branch=main)](https://travis-ci.com/edgeee/buycoins-python) [![Circle CI](https://img.shields.io/badge/license-MIT-blue.svg)](https://img.shields.io/badge/license-MIT-blue.svg) [![PyPI version](https://badge.fury.io/py/buycoins.svg)](https://badge.fury.io/py/buycoins) [![Python 3.6+](https://img.shields.io/badge/python-3.6-blue.svg)](https://www.python.org/downloads/release/python-360/)
 
 This library provides easy access to the Buycoins API using the Python programming language. It provides all the feature of the API so that you don't need to interact with the API directly. This libary can be used with Python 3.6+
 
