@@ -272,4 +272,4 @@ See [CONTRIBUTING.md](CONTRIBUTING.md)
 
 
 ## License
-[MIT License](https://github.com/graphql-python/gql/blob/master/LICENSE)
+[MIT License](https://github.com/edgeee/buycoins-python/blob/master/LICENSE)
