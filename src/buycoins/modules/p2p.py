@@ -10,7 +10,7 @@ def place_limit_order(
     cryptocurrency: str,
     price_type: str,
     static_price: float = None,
-    dynamic_exchange_rate: float = None
+    dynamic_exchange_rate: float = None,
 ):
     query_str = """
         mutation($side: OrderSide!, $amount: BigDecimal!, $crypto: Cryptocurrency, $type_: PriceType!, 

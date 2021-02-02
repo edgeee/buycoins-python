@@ -127,5 +127,5 @@ def create_address(*, cryptocurrency: str):
     """
     variables = dict(crypto=cryptocurrency)
     res = execute_query(query_str, variables)
-    res = res['createAddress']
-    return AddressType(cryptocurrency=res['cryptocurrency'], address=res['address'])
+    res = res["createAddress"]
+    return AddressType(cryptocurrency=res["cryptocurrency"], address=res["address"])

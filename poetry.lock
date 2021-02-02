@@ -138,6 +138,14 @@ optional = false
 python-versions = ">=3.6,<4"
 
 [[package]]
+name = "httpretty"
+version = "1.0.5"
+description = "HTTP client mock for Python"
+category = "dev"
+optional = false
+python-versions = ">=3"
+
+[[package]]
 name = "idna"
 version = "2.10"
 description = "Internationalized Domain Names in Applications (IDNA)"
@@ -422,7 +430,7 @@ testing = ["pytest (>=3.5,!=3.7.3)", "pytest-checkdocs (>=1.2.3)", "pytest-flake
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.6"
-content-hash = "1c39839e8d74478106f7723a1476370cbbd51129dbca4808e5406b9e3846dcef"
+content-hash = "bfadc889f25214dc32973d4141ab7bae304b19b9efc1dae90aaffc1624f0baf4"
 
 [metadata.files]
 appdirs = [
@@ -474,6 +482,9 @@ gql = [
 graphql-core = [
     {file = "graphql-core-3.1.2.tar.gz", hash = "sha256:c056424cbdaa0ff67446e4379772f43746bad50a44ec23d643b9bdcd052f5b3a"},
     {file = "graphql_core-3.1.2-py3-none-any.whl", hash = "sha256:b1826fbd1c6c290f7180d758ecf9c3859a46574cff324bf35a10167533c0e463"},
+]
+httpretty = [
+    {file = "httpretty-1.0.5.tar.gz", hash = "sha256:e53c927c4d3d781a0761727f1edfad64abef94e828718e12b672a678a8b3e0b5"},
 ]
 idna = [
     {file = "idna-2.10-py2.py3-none-any.whl", hash = "sha256:b97d804b1e9b523befed77c48dacec60e6dcb0b5391d57af6a65a312a90648c0"},

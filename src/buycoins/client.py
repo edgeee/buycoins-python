@@ -17,14 +17,16 @@ _client: Optional[Client] = None
 
 
 def _make_auth_header(public_key, secret_key):
-    return 'Basic ' + b64encode(bytes(f'{public_key}:{secret_key}', 'utf8')).decode()
+    return "Basic " + b64encode(bytes(f"{public_key}:{secret_key}", "utf8")).decode()
 
 
 def initialize(public_key: str, secret_key: str):
     global _transport, _client
     if not _client:
-        headers = {'Authorization': _make_auth_header(public_key, secret_key)}
-        _transport = RequestsHTTPTransport(url=BUYCOINS_GRAPHQL_ENDPOINT, headers=headers)
+        headers = {"Authorization": _make_auth_header(public_key, secret_key)}
+        _transport = RequestsHTTPTransport(
+            url=BUYCOINS_GRAPHQL_ENDPOINT, headers=headers
+        )
         _client = Client(transport=_transport, fetch_schema_from_transport=False)
 
 
@@ -37,14 +39,14 @@ def get_client() -> Client:
 def execute_query(document: str, variables: Optional[Dict] = None) -> Dict:
     kwargs = {}
     if variables is not None:
-        kwargs['variable_values'] = variables
+        kwargs["variable_values"] = variables
     try:
         return get_client().execute(gql(document), **kwargs)
     except TransportQueryError as exc:
         if len(exc.errors) > 0:
-            error_message = exc.errors[0]['message']
+            error_message = exc.errors[0]["message"]
         else:
-            error_message = 'Unknown error'
+            error_message = "Unknown error"
         raise ExecutionError(error_message)
     except TransportServerError as exc:
         raise RemoteServerError(exc)

@@ -19,7 +19,6 @@ class OrderType(NamedTuple):
     status: str
     side: str
     created_at: int
-    total_coin_amount: str = None
     static_price: Decimal = None
     price_type: str = None
     dynamic_exchange_rate: str = None
@@ -30,7 +29,7 @@ def _make_order(node: Dict) -> OrderType:
     return OrderType(
         id=node.get("id"),
         cryptocurrency=node.get("cryptocurrency"),
-        coin_amount=node.get("coinAmount"),
+        coin_amount=node.get("coinAmount", node.get("totalCoinAmount")),
         side=node.get("side"),
         status=node.get("status"),
         created_at=node.get("createdAt"),
@@ -96,7 +95,7 @@ def _do_order(order_type, *, price_id: str, coin_amount: float, cryptocurrency: 
 
     variables = dict(price=price_id, amount=coin_amount, crypto=cryptocurrency)
     result = execute_query(query_str, variables)
-    return _make_order(result["order_type"])
+    return _make_order(result[order_type])
 
 
 def buy(*, price_id: str, coin_amount: float, cryptocurrency: str):
@@ -105,7 +104,7 @@ def buy(*, price_id: str, coin_amount: float, cryptocurrency: str):
     )
 
 
-def sell(*, price_id: str, coin_amount: float, cryptocurrency: str):
+def sell(*, price_id: str, coin_amount: float, cryptocurrency: str) -> OrderType:
     return _do_order(
         "sell",
         price_id=price_id,

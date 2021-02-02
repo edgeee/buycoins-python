@@ -12,6 +12,7 @@ gql = {extras = ["requests"], version = "^2.0.0", allow-prereleases = true}
 pytest = "^5.2"
 black = "^20.8b1"
 tox = "^3.21.3"
+httpretty = "^1.0.5"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

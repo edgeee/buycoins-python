@@ -4,7 +4,7 @@ class _BaseException(Exception):
 
 class NoConnectionError(_BaseException):
     def __init__(self):
-        super().__init__('No active connection: have you initialized yet?')
+        super().__init__("No active connection: have you initialized yet?")
 
 
 class ExecutionError(_BaseException):
