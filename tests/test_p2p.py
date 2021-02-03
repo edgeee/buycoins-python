@@ -93,7 +93,7 @@ get_market_book_response = dict(
 )
 
 
-def test_place_limit_order(_graphql_endpoint):
+def test_place_limit_order():
     from buycoins import p2p, orders
 
     _mock_gql(place_limit_order_response)
@@ -106,13 +106,13 @@ def test_place_limit_order(_graphql_endpoint):
         static_price=2342.23,
     )
     assert orders.OrderType == type(order)
-    assert order.coin_amount == '0.0023'
+    assert order.coin_amount == "0.0023"
     assert order.cryptocurrency == "bitcoin"
     assert order.price_type == "static"
-    assert order.static_price == '2342.23'
+    assert order.static_price == "2342.23"
 
 
-def test_post_market_order(_graphql_endpoint):
+def test_post_market_order():
     from buycoins import p2p, orders
 
     _mock_gql(place_market_order_response)
@@ -129,7 +129,7 @@ def test_post_market_order(_graphql_endpoint):
     assert order.static_price is None
 
 
-def test_get_orders(_graphql_endpoint):
+def test_get_orders():
     from buycoins import p2p
     from buycoins.modules.orders import OrderType
 

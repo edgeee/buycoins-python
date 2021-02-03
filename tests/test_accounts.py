@@ -12,7 +12,7 @@ create_deposit_response = dict(
 )
 
 
-def test_create_deposit(_graphql_endpoint):
+def test_create_deposit():
     from buycoins import accounts
 
     _mock_gql(create_deposit_response)
