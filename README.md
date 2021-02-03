@@ -5,7 +5,7 @@
 This library provides easy access to the Buycoins API using the Python programming language. It provides all the feature of the API so that you don't need to interact with the API directly. This libary can be used with Python 3.6+
 
 ## Links
-1. Buycoins API documentation: https://developers.buycoins.africa/
+- Buycoins API documentation: https://developers.buycoins.africa/
 
 ## Installation
 You can install this package using pip:
@@ -14,6 +14,14 @@ pip install --upgrade buycoins
 ```
 
 ## Documentation
+
+### Features
+- [Accounts](https://github.com/edgeee/buycoins-python#accounts)
+- [Orders](https://github.com/edgeee/buycoins-python#orders)
+- [P2P Trading](https://github.com/edgeee/buycoins-python#p2p-trading)
+- [Transactions](https://github.com/edgeee/buycoins-python#transactions)
+- [Webhooks](https://github.com/edgeee/buycoins-python#webhooks)
+
 
 ### Primer
 - The library is structured around the concept of a `type`, so everything is a type. 
@@ -53,9 +61,9 @@ import buycoins as bc
 # Create a virtual deposit account:
 acc = bc.accounts.create_deposit("john doe") # acc is a VirtualDepositAccountType
 
-acc.account_name  # john doe
-acc.bank_name  # bank name
-acc.account_number  # account number
+print(acc.account_name)  # john doe
+print(acc.bank_name)  # bank name
+print(acc.account_number)  # account number
 ```
 
 ### Orders
@@ -91,16 +99,16 @@ import buycoins as bc
 # Get prices of all cryptocurrencies
 prices = bc.orders.get_prices()  # prices is a list of CoinPriceType
 
-prices[0].id  # ID of this price entry
-prices[0].cryptocurrency  # cryptocurrency, e.g. bitcoin, litecoin
-prices[0].expires_at  # when this price entry will expire
+print(prices[0].id)  # ID of this price entry
+print(prices[0].cryptocurrency)  # cryptocurrency, e.g. bitcoin, litecoin
+print(prices[0].expires_at)  # when this price entry will expire
 
 
 # Get price for a single cryptocurrency
 price = bc.orders.get_price("bitcoin")  # price is a CoinPriceType
 
-price.id  # ID of this price entry
-price.cryptocurrency  # bitcoin
+print(price.id)  # ID of this price entry
+print(price.cryptocurrency)  # bitcoin
 
 
 # Buy a cryptocurrency
@@ -110,9 +118,9 @@ order = bc.orders.buy(
     cryptocurrency="litecoin"
 )  # order is an OrderType
 
-order.status   # either active or inactive
-order.side   # either buy or sell
-order.cryptocurrency   # litecoin
+print(order.status)   # either active or inactive
+print(order.side)   # either buy or sell
+print(order.cryptocurrency)   # litecoin
 
 
 # Sell a cryptocurrency
@@ -122,9 +130,9 @@ order = bc.orders.sell(
     cryptocurrency="ethereum"
 )  # order is an OrderType
 
-order.status  # either active or pending
-order.side  # sell
-order.cryptocurrency  # ethereum
+print(order.status)  # either active or pending
+print(order.side)  # sell
+print(order.cryptocurrency)  # ethereum
 ```
 
 ### P2P Trading
@@ -163,8 +171,8 @@ order = bc.p2p.place_limit_order(
 # NB: if price_type == 'static', static_price must be provided, and 
 # if price_type == 'dynamic', dynamic_exchange_rate must be provided
 
-order.id  # ID of order
-order.status  # status, either active or inactive
+print(order.id)  # ID of order
+print(order.status)  # status, either active or inactive
 
 
 # Place market order
@@ -174,22 +182,22 @@ order = bc.p2p.place_market_order(
     cryptocurrency='litecoin'
 )  # order is an OrderType
 
-order.id  # ID of order
-order.status  # status, either active or inactive
+print(order.id)  # ID of order
+print(order.status)  # status, either active or inactive
 
 
 # Get a list of all your orders
 orders, dynamic_price_expiry = bc.p2p.get_orders("active")  # orders is a list of OrderType; dynamic_price_expiry is a timestamp
 
-orders[0].id  # ID of the first order
-orders[1].status  # status of the first order
+print(orders[0].id)  # ID of the first order
+print(orders[1].status)  # status of the first order
 
 
 # Get a list of all ongoing orders on the Buycoins platform
 market_book, dynamic_price_expiry = bc.p2p.get_market_book()  # market_book is a list of OrderType; dynamic_price_expiry is a timestamp
 
-orders[0].id  # ID of the first order
-orders[1].status  # status of the first order
+print(orders[0].id)  # ID of the first order
+print(orders[1].status)  # status of the first order
 ```
 
 
@@ -232,14 +240,15 @@ import buycoins as bc
 
 # Get balances
 balances = bc.transactions.get_balances()  # balances is a list of CoinBalanceType
-balances[0].cryptocurrency  # bitcoin, litecoin, etc
-balances[0].confirmed_balance  # the confirmed balance
+
+print(balances[0].cryptocurrency)  # bitcoin, litecoin, etc
+print(balances[0].confirmed_balance)  # the confirmed balance
 
 
 # Get balance for a single cryptocurrency
 balance = bc.transactions.get_balance("bitcoin")  # balance is a CoinBalanceType
-balance.cryptocurrency  # bitcoin
-balance.confirmed_balance  # the confirmed balance
+print(balance.cryptocurrency)  # bitcoin
+print(balance.confirmed_balance)  # the confirmed balance
 
 
 # Estimate network fee required for a transaction
@@ -248,8 +257,8 @@ fee = bc.transactions.estimate_network_fee(
     0.0423,  # txn amount
 )  # fee is a NetworkFeeType
 
-fee.estimated_fee  # estimated fee for txn
-fee.total  # total
+print(fee.estimated_fee)  # estimated fee for txn
+print(fee.total)   # total
 
 
 # Send cryptocurrency to a wallet address
@@ -259,17 +268,36 @@ sent = bc.transactions.send(
     address="<wallet-address>"
 )  # sent is a SendReturnValueType
 
-sent.fee  # fee charged for the "send" txn
-sent.status # status of the txn
-sent.transaction.id  # ID of the txn
-sent.transaction.hash  # txn hash
+print(sent.fee)  # fee charged for the "send" txn
+print(sent.status) # status of the txn
+print(sent.transaction.id)  # ID of the txn
+print(sent.transaction.hash)  # txn hash
 
 
 # Generate wallet address
 addr = bc.transactions.create_address("bitcoin")  # addr is an AddressType
 
-addr.address  # Address string
-addr.cryptocurrency  # cryptocurrency
+print(addr.address)  # Address string
+print(addr.cryptocurrency)  # cryptocurrency
+```
+
+
+### Webhooks
+
+Webhooks provides a way for Buycoins to inform you of events that take place on your account.
+See the [Buycoins documentation](https://developers.buycoins.africa/webhooks/introduction) for  an introduction and the available events.
+
+#### Usage
+```python
+import buycoins as bc
+
+is_valid = bc.webhook.verify_payload(
+    body="<raw request body from buycoins (in bytes)>",
+    webhook_token="<webhook-token generated on buycoins>",
+    header_signature="X-Webhook-Signature header"
+)
+
+print(is_valid)  # True if the event is from Buycoins, False otherwise.
 ```
 
 
