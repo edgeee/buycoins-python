@@ -55,7 +55,7 @@ buy_response = dict(
 )
 
 
-def test_get_prices(_graphql_endpoint):
+def test_get_prices():
     from buycoins import orders
 
     _mock_gql(get_prices_response)
@@ -67,7 +67,7 @@ def test_get_prices(_graphql_endpoint):
     assert prices[0].id == "1"
 
 
-def test_get_price(_graphql_endpoint):
+def test_get_price():
     from buycoins import orders
 
     _mock_gql(get_prices_response)
@@ -79,7 +79,7 @@ def test_get_price(_graphql_endpoint):
     assert price.buy_price_per_coin == Decimal(1993)
 
 
-def test_sell(_graphql_endpoint):
+def test_sell():
     from buycoins import orders
 
     _mock_gql(sell_coin_response)
@@ -92,7 +92,7 @@ def test_sell(_graphql_endpoint):
     assert resp.cryptocurrency == "ethereum"
 
 
-def test_buy(_graphql_endpoint):
+def test_buy():
     from buycoins import orders
 
     _mock_gql(buy_response)
