@@ -66,7 +66,7 @@ buycoins.initialize('<PUBLIC-KEY>', '<SECRET-KEY>')
 ```
 
 ### Accounts
-Accounts provide a way to programmatically fund you Buycoins account.
+Accounts provide a way to programmatically create virtual naira accounts.
 
 #### Types
 ```dtd
