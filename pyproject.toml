@@ -8,7 +8,7 @@ repository = "https://github.com/edgeee/buycoins-python"
 documentation = "https://github.com/edgeee/buycoins-python"
 
 [tool.poetry.dependencies]
-python = "^3.6"
+python = "~3.6"
 gql = {extras = ["requests"], version = "^2.0.0", allow-prereleases = true}
 
 [tool.poetry.dev-dependencies]
