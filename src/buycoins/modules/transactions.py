@@ -93,7 +93,7 @@ def send(*, cryptocurrency: str, amount: float, address: str) -> SendReturnValue
             fee
             status
             transaction {
-              hash
+              txhash
               id
             }
           }
@@ -111,7 +111,7 @@ def send(*, cryptocurrency: str, amount: float, address: str) -> SendReturnValue
         status=send_val["status"],
         transaction=TransactionType(
             id=send_val["transaction"]["id"],
-            hash=send_val["transaction"]["hash"],
+            hash=send_val["transaction"]["txhash"],
         ),
     )
 

@@ -24,7 +24,7 @@ send_crypto_response = dict(
         cryptocurrency="bitcoin",
         fee="0.0002",
         status="active",
-        transaction=dict(id="tx1", hash="a49s038aty2sfa23434872"),
+        transaction=dict(id="tx1", txhash="a49s038aty2sfa23434872"),
     )
 )
 
