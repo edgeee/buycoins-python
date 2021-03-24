@@ -3,7 +3,6 @@ from typing import Optional, Dict
 
 from gql import Client, gql
 from gql.transport import Transport
-from gql.transport.exceptions import TransportQueryError, TransportServerError
 from gql.transport.requests import RequestsHTTPTransport
 
 from buycoins.exceptions import NoConnectionError, ExecutionError, RemoteServerError
@@ -42,11 +41,8 @@ def execute_query(document: str, variables: Optional[Dict] = None) -> Dict:
         kwargs["variable_values"] = variables
     try:
         return get_client().execute(gql(document), **kwargs)
-    except TransportQueryError as exc:
-        if len(exc.errors) > 0:
-            error_message = exc.errors[0]["message"]
+    except Exception as exc:
+        if hasattr(exc, "errors") and len(exc.errors) > 0: # noqa
+            raise ExecutionError(exc.errors[0]["message"])
         else:
-            error_message = "Unknown error"
-        raise ExecutionError(error_message)
-    except TransportServerError as exc:
-        raise RemoteServerError(exc)
+            raise RemoteServerError(exc)
