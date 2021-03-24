@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "buycoins"
-version = "1.0.0"
+version = "1.0.1"
 description = "A Python SDK for the buycoins API"
 authors = ["Rasheed Musa <rasheedmusa9@gmail.com>"]
 readme = "README.md"
@@ -9,7 +9,7 @@ documentation = "https://github.com/edgeee/buycoins-python"
 
 [tool.poetry.dependencies]
 python = "~3.6"
-gql = {extras = ["requests"], version = "^2.0.0", allow-prereleases = true}
+gql = "^2.0.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
